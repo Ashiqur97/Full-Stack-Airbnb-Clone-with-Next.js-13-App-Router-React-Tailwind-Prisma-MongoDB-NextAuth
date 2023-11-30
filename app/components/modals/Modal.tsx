@@ -157,7 +157,12 @@ const Modal:React.FC<ModalProps> = ({
                                 gap-4
                                 w-full
                             ">
-                                <Button label="My Button" />
+                                <Button 
+                                onClick={handleSubmit}
+                                disabled={disabled}
+                                label={actionLabel} 
+                                />
+                                
                             </div>  
                         </div>
                     </div>
