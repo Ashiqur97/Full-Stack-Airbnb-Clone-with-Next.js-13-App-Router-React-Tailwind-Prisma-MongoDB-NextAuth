@@ -4,7 +4,8 @@ import './globals.css'
 const inter = Nunito({ subsets: ['latin'] })
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from './components/ClientOnly';
-import Modal from './components/modals/Modal';
+// import Modal from './components/modals/Modal';
+import RegisterModal from './components/modals/RegisterModal';
 
 export const metadata= {
   title: 'Airbnb',
@@ -21,7 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ClientOnly>
-          <Modal actionLabel='Submit' title='hello world' isOpen />
+          <RegisterModal />
+          {/* <Modal actionLabel='Submit' title='hello world' isOpen /> */}
             <Navbar />
         </ClientOnly>
         {children}
