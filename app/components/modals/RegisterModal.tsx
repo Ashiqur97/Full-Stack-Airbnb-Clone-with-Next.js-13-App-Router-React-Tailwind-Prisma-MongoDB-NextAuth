@@ -17,6 +17,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from '../input/Input';
 
+
 const RegisterModal = () => {
     const RegisterModal = useRegisterModal();
     const [isLoading,setIsLoading] = useState(false);
@@ -57,7 +58,14 @@ const RegisterModal = () => {
                 title="Welcome to Airbnb"
                 subtitle="Create an account"
             />
-            <Input />
+            <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
         </div>
     )
 
