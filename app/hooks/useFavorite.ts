@@ -7,7 +7,20 @@ import { SafeUser } from "../types";
 import useLoginModal from "./useLoginModal";
 
 interface IUseFavorite {
-    listing: string;
+    listingId: string;
     currentUser?: SafeUser | null;
 }
 
+const useFavorite = ({
+    listingId,
+    currentUser
+}: IUseFavorite) => {
+    const router = useRouter();
+    const loginModal = useLoginModal();
+
+    const hasFavorited = useMemo(() => {
+        const list = currentUser?.favoriteIds || [];
+
+        return list.includes(listingId);
+    },[])
+}
