@@ -14,7 +14,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import axios from "axios";
 import Modal from "./Modal";
 import Heading from "../Heading";
-import Input from '../input/Input';
+import Input from '../inputs/Input';
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
