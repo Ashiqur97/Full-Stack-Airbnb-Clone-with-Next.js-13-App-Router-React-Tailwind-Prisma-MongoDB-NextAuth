@@ -7,8 +7,9 @@ import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeUser, safeListing } from "@/app/types";
 import { Reservation } from "@prisma/client";
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 const initialDateRange = {
     startDate: new Date(),
@@ -46,6 +47,26 @@ const ListingClient: React.FC<ListingClientProps> = ({
         });
         return dates;
     },[reservations]);
+
+    const [isLoading,setIsLoading] = useState(false);
+    const [totalPrice,setTotalPrice] = useState(listing.price);
+    const [dateRange,setDateRange] = useState(initialDateRange);
+
+    const onCreateReservation = useCallback(() => {
+        if(!currentUser) {
+            return loginModal.onOpen();
+        }
+
+        setIsLoading(true);
+
+        axios.post('/api/reservations', {
+            totalPrice,
+            startDate: dateRange.startDate,
+            endDate: dateRange.endDate,
+            listingId: listing?.id
+        })
+        
+    },[]);
 
     const category = useMemo(() => {
         return categories.find((item) => item.label === listing.category); 
