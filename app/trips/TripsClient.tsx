@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation"
 import { useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import ListingCard from "../components/listings/ListingCard";
 
 
 interface TripsClientProps {
@@ -55,6 +56,18 @@ const TripsClient: React.FC<TripsClientProps> = ({
                     2xl:grid-cols-6
                     gap-8
             ">
+                        {reservations.map((reservation: any) => (
+          <ListingCard
+            key={reservation.id}
+            data={reservation.listing}
+            reservation={reservation}
+            actionId={reservation.id}
+            onAction={onCancel}
+            disabled={deletingId === reservation.id}
+            actionLabel="Cancel reservation"
+            currentUser={currentUser}
+          />
+        ))}
 
                 </div>
         </Container>
